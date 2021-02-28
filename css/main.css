@@ -1,0 +1,159 @@
+:root {
+	--Color-Fondo: #FFDEDE;
+	--btn-color: #84c4cd;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.Contenedores{
+	display: block;
+	height: 640px;
+	width: 360px;
+	border: 1px solid black;
+	/* background-color: grey; */
+}
+
+.logo {
+	padding-top: 100px;
+}
+
+.content{
+	padding-top: 100px;
+}
+
+.Splash h1{
+	text-align: center;
+	font-size: 80px;
+}
+
+.contenido{
+	margin-top: 40px;
+	background-color: var(--Color-Fondo);
+	text-align: center;
+	height: 560px;
+}
+
+.contenido h1 {
+	padding-top: 50px;
+	font-size:70px;
+}
+
+ul, ol {
+	list-style-type: none;
+}
+
+ul li a, ol li a{
+	border-radius: 10px;
+	padding: 10px 20%;
+	background-color: #fff;
+	color: black;
+	transition-timing-function: ease-out;
+	transition: padding 1s, background-color 2s, color .5s;
+}
+
+ul li a:hover, ol li a:hover {
+	padding: 10px 22%;
+	background-color: var(--btn-color);
+	color: #fff;
+	text-decoration: none;
+}
+
+ul li a:active, ol li a:active {
+	padding: 10px 22%;
+	background-color: var(--btn-color);
+	color: #fff;
+	text-decoration: none;
+}
+
+ul li, ol li {
+	margin-top: 20px;
+}
+
+ul {
+	margin-top: 60px;
+}
+
+ol {
+	margin-top: 70px;
+}
+
+.mapa .contenido {
+	padding-top: 150px;
+}
+
+.back{
+	position: absolute;
+}
+
+.circle {
+	position: inherit;
+	text-align: center;
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	background-color: black;
+	color: white;
+}
+
+.circle h3 {
+	position: relative;
+	bottom: 30%;
+}
+
+.circle h3 a {
+	color: white;
+	height: 40px;
+	width: 40px;
+}
+
+.circle h3 a:hover {
+	color: white;
+	text-decoration: none;	
+}
+
+.contenido_menu{
+	display: inline-block;
+	margin: 20px;
+}
+
+.informacion {
+	text-align: left;
+}
+
+.imagen {
+	background-color: grey;
+	height: 80px;
+	width: 80px;
+}
+
+.cont-texto {
+	padding-top: 100px;
+	margin-left: 40px;
+	width: 70%;
+}
+
+.texto {
+	text-align: center;
+	font-size: 30px;
+}
+
+.Login .formulario{
+	padding-top: 100px;
+}
+
+.Login ol {
+	padding-top: 60px;
+}
+
+.formulario {
+	margin-left: 10%;
+	width: 80%;
+}
+
+.ocultar {
+	display: none;
+}
