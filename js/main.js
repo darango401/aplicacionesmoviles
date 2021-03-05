@@ -32,6 +32,8 @@ function crearReferencias()
     btn_volver4 = document.getElementById("btn_volver4");
     btn_volver5 = document.getElementById("btn_volver5");
     btn_volver6 = document.getElementById("btn_volver6");
+    btn_volver7 = document.getElementById("btn_volver7");
+    btn_volver8 = document.getElementById("btn_volver8");
     btn_menu_Siguiente_1 = document.getElementById("btn_menu_Siguiente_1");
     btn_menu_Siguiente_2 = document.getElementById("btn_menu_Siguiente_2");
     btn_menu_Anterior_2 = document.getElementById("btn_menu_Anterior_2");
@@ -52,6 +54,8 @@ function agregarEventos() {
         btn_volver4.addEventListener("click",()=>{irA(Inicio);});
         btn_volver5.addEventListener("click",()=>{irA(Inicio);});
         btn_volver6.addEventListener("click",()=>{irA(Inicio);});
+        btn_volver7.addEventListener("click",()=>{irA(Inicio);});
+        btn_volver8.addEventListener("click",()=>{irA(Inicio);});
         btn_menu_Siguiente_1.addEventListener("click",()=>{irA(Carta1);});
         btn_menu_Siguiente_2.addEventListener("click",()=>{irA(Carta2);});
         btn_menu_Anterior_2.addEventListener("click",()=>{irA(Carta);});
