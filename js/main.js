@@ -5,7 +5,7 @@ var secciones = [];
 window.onload = () =>{
     crearReferencias();
     agregarEventos();
-    setTimeout(()=>{irA(Inicio);},1500);
+    setTimeout(()=>{irA(Inicio);},1000);
 }
 function crearReferencias()
 {
@@ -58,5 +58,24 @@ function ocultarSecciones()
     for(i in secciones)
     {
         secciones[i].classList.add("ocultar");
+    }
+}
+function validar(){
+    var nombre, apellido, documento, usuario, contrasena;
+
+    nombre = document.getElementById("nombre_registro").value;
+    apellido = document.getElementById("apellido_registro").value;
+    documento = document.getElementById("documento_registro").value;
+    usuario = document.getElementById("usuario_registro").value;
+    contrasena = document.getElementById("contrasena_registro").value;
+
+    if(nombre === "" || apellido === "" || documento === "" || usuario === "" || contrasena === ""){
+        alert("Todos los campos son obligatorios")
+    }else{
+        localStorage.nombre = document.getElementById("nombre").value;
+        localStorage.apellido = document.getElementById("apellido").value;
+        localStorage.documento = document.getElementById("documento").value;
+        localStorage.usuario = document.getElementById("usuario").value;
+        localStorage.contrasena = document.getElementById("contrasena").value;
     }
 }
