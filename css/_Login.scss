@@ -1,9 +1,18 @@
-.Login{
-    .forulario{
-        padding-top: 100px;
-
-        ol{
-            padding-top: 60px;
+.Registrate{
+    width: 200px;
+    margin: 50px 0 10px 15%;
+    a{
+        display: block;
+        padding: 7px 0px;
+        border-radius: 10px;
+        background-color: #fff;
+        color: black;
+        text-decoration: none;
+        &:active{
+            text-decoration: none;
+        }
+        &:hover{
+            text-decoration: none;
         }
     }
 }
