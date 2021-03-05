@@ -1,0 +1,32 @@
+.back{
+    z-index: 10000;
+	position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.circle {
+	position: inherit;
+	text-align: center;
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	background-color: black;
+	color: white;
+
+    h3 {
+        position: relative;
+        bottom: 30%;
+
+        a{
+            color: white;
+            height: 40px;
+            width: 40px;
+
+            &:hover{
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
+}

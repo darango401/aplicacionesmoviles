@@ -1,0 +1,72 @@
+.Inicio{
+    img{
+        margin-top: 10%;
+        width: 200px;
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 60px;
+
+    li{
+        margin-top: 20px;
+
+        a{
+            border-radius: 10px;
+            padding: 10px 20% 10px 20%;
+            background-color: #fff;
+            color: black;
+            transition-timing-function: ease-out;
+            transition: padding 1s, background-color 2s, color .5s;
+            
+
+            &:hover{
+                padding: 10px 22%;
+                background-color: $Btn-Color;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            &:active{
+                padding: 10px 22%;
+                background-color: $Btn-Color;
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+ol {
+    list-style-type: none;
+    margin-top: 70px;
+
+    li{
+        margin-top: 20px;
+
+        a{
+            border-radius: 10px;
+            padding: 10px 18%;
+            background-color: #fff;
+            color: black;
+            transition-timing-function: ease-out;
+            transition: padding 1s, background-color 2s, color .5s;
+            width: 500px;
+
+            &:hover{
+                padding: 10px 22%;
+                background-color: $Btn-Color;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            &:active{
+                padding: 10px 22%;
+                background-color: $Btn-Color;
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+    }
+}

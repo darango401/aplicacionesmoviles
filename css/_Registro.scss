@@ -1,0 +1,14 @@
+.enviar{
+    border-radius: 10px;
+    background-color: #fff;
+    color: black;
+    width: 200px;
+    transition-timing-function: ease-out;
+    transition: padding 1s, background-color 2s, color .5s;
+    margin-left: 15%;
+    &:hover{
+        background-color: $Btn-Color;
+        color: #fff;
+        text-decoration: none;
+    }
+}

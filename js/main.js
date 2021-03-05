@@ -5,7 +5,7 @@ var secciones = [];
 window.onload = () =>{
     crearReferencias();
     agregarEventos();
-    setTimeout(()=>{irA(Inicio);},1000);
+    setTimeout(()=>{irA(Inicio);},3000);
 }
 function crearReferencias()
 {
@@ -37,8 +37,6 @@ function crearReferencias()
     btn_menu_Anterior_2 = document.getElementById("btn_menu_Anterior_2");
     btn_menu_Anterior_3 = document.getElementById("btn_menu_Anterior_3");
 
-
-    ocultarSecciones();
     Splash.classList.remove("ocultar")
 }
 function agregarEventos() {

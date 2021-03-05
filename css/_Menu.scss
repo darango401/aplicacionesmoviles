@@ -1,0 +1,32 @@
+.contenido_menu{
+	margin-top: 50px;
+    margin-left: 26%;
+}
+
+.informacion {
+	text-align: left;
+}
+
+.imagen {
+	// background-color: grey;
+	height: 200px;
+	width: 200px;
+    img{
+        height: 200px;
+        width: 200px;
+        // border: 1px black solid;
+        border-radius: 100%;
+    }
+}
+
+.movilidad{
+    a{
+        position: relative;
+        bottom: 280px;
+        img{
+            margin: 0px 20px;
+            display: inline-block;
+            width: 38px;
+        }
+    }
+}
