@@ -5,7 +5,7 @@ var secciones = [];
 window.onload = () =>{
     crearReferencias();
     agregarEventos();
-    setTimeout(()=>{irA(Inicio);},3000);
+    setTimeout(()=>{irA(Inicio);},1000);
 }
 function crearReferencias()
 {
