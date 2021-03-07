@@ -237,19 +237,19 @@
 		</div>
 		<div class="contenido">
 			<br><br><br><br>
-			<form action="" class="formulario" id="Login">
+			<form method="post" class="formulario" id="formulario_login">
 				<div class="form-group">
 					<label for="nombre">Usuario:</label>
-					<input class="form-control" id="usuario_login" type="text" placeholder="Usuario:">
+					<input class="form-control" id="usuario_login" required type="text" placeholder="Usuario:">
 				</div>
 				<div class="form-group">
 					<label for="nombre">Contraseña:</label>
-					<input class="form-control" id="contrasena_login" type="text" placeholder="Contraseña:">
+					<input class="form-control" id="contrasena_login" required type="password" placeholder="Contraseña:">
 				</div>
 				<div class="Registrate">
 					<a href="javascript:void(0);" id="btn_registrate">Registrate</a>
 				</div>
-				<input class="form-control Enviar" id="Inicio_Sesion" type="submit" value="Iniciar Sesión">
+				<input class="form-control Enviar" id="Inicio_Sesion" type="submit" onclick="procesarLogin();" value="Iniciar Sesión">
 			</form>
 		</div>
 	</div>
@@ -330,11 +330,10 @@
 			</form>
 		</div>
 	</div>
-	<script src="js/login.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/login.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
-
 </html>

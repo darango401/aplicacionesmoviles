@@ -1,15 +1,14 @@
 var Splash, Inicio, Mapa, Carta, Carta1, Carta2, Reserva_Sin_Login, Reserva, Login, Registro;
-var btn_carta,btn_reserva, btn_mapa, btn_registro, btn_login;
+var btn_carta, btn_reserva, btn_mapa, btn_registro, btn_login;
 var secciones = [];
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
-window.onload = () =>{
+window.onload = () => {
     crearReferencias();
     agregarEventos();
-    setTimeout(()=>{irA(Inicio);},1000);
+    setTimeout(() => { irA(Inicio); }, 1000);
 }
-function crearReferencias()
-{
+function crearReferencias() {
     Splash = document.getElementById("Splash");
     Inicio = document.getElementById("Inicio");
     Mapa = document.getElementById("Mapa");
@@ -43,52 +42,50 @@ function crearReferencias()
     Splash.classList.remove("ocultar")
 }
 function agregarEventos() {
-        btn_carta.addEventListener("click",()=>{irA(Carta);});
-        btn_reserva.addEventListener("click",()=>{irA(Reserva);});
-        btn_mapa.addEventListener("click",()=>{irA(Mapa);});
-        btn_registro.addEventListener("click",()=>{irA(Registro);});
-        btn_registrate.addEventListener("click",()=>{irA(Registro);});
-        btn_login.addEventListener("click",()=>{irA(Login);});
-        btn_volver1.addEventListener("click",()=>{irA(Inicio);});
-        btn_volver2.addEventListener("click",()=>{irA(Inicio);});
-        btn_volver3.addEventListener("click",()=>{irA(Inicio);});
-        btn_volver4.addEventListener("click",()=>{irA(Inicio);});
-        btn_volver5.addEventListener("click",()=>{irA(Inicio);});
-        btn_volver6.addEventListener("click",()=>{irA(Inicio);});
-        btn_volver7.addEventListener("click",()=>{irA(Inicio);});
-        btn_volver8.addEventListener("click",()=>{irA(Inicio);});
-        btn_menu_Siguiente_1.addEventListener("click",()=>{irA(Carta1);});
-        btn_menu_Siguiente_2.addEventListener("click",()=>{irA(Carta2);});
-        btn_menu_Anterior_2.addEventListener("click",()=>{irA(Carta);});
-        btn_menu_Anterior_3.addEventListener("click",()=>{irA(Carta1);});
+    btn_carta.addEventListener("click", () => { irA(Carta); });
+    btn_reserva.addEventListener("click", () => { irA(Reserva); });
+    btn_mapa.addEventListener("click", () => { irA(Mapa); });
+    btn_registro.addEventListener("click", () => { irA(Registro); });
+    btn_registrate.addEventListener("click", () => { irA(Registro); });
+    btn_login.addEventListener("click", () => { irA(Login); });
+    btn_volver1.addEventListener("click", () => { irA(Inicio); });
+    btn_volver2.addEventListener("click", () => { irA(Inicio); });
+    btn_volver3.addEventListener("click", () => { irA(Inicio); });
+    btn_volver4.addEventListener("click", () => { irA(Inicio); });
+    btn_volver5.addEventListener("click", () => { irA(Inicio); });
+    btn_volver6.addEventListener("click", () => { irA(Inicio); });
+    btn_volver7.addEventListener("click", () => { irA(Inicio); });
+    btn_volver8.addEventListener("click", () => { irA(Inicio); });
+    btn_menu_Siguiente_1.addEventListener("click", () => { irA(Carta1); });
+    btn_menu_Siguiente_2.addEventListener("click", () => { irA(Carta2); });
+    btn_menu_Anterior_2.addEventListener("click", () => { irA(Carta); });
+    btn_menu_Anterior_3.addEventListener("click", () => { irA(Carta1); });
 }
-function irA(Seccion){
+function irA(Seccion) {
     ocultarSecciones();
     Seccion.classList.remove("ocultar")
 }
-function ocultarSecciones()
-{
-    for(i in secciones)
-    {
+function ocultarSecciones() {
+    for (i in secciones) {
         secciones[i].classList.add("ocultar");
     }
 }
 const expresiones = {
-    usuario: /^[a-zA-Z0-9]{4,16}$/, 
-    nombre: /^[a-zA-z]{3,20}$/, 
+    usuario: /^[a-zA-Z0-9]{4,16}$/,
+    nombre: /^[a-zA-z]{3,20}$/,
     apellido: /^[a-zA-z]{2,35}$/,
     contrasena: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
-    documento: /^[0-9]{8,16}$/ 
+    documento: /^[0-9]{8,16}$/
 }
 const campos = {
     usuario: false,
     apellido: false,
     nombre: false,
     contrasena: false,
-    documento: false   
+    documento: false
 }
 const validarCampo = (expresion, input, campo) => {
-    if(expresion.test(input.value)){
+    if (expresion.test(input.value)) {
         document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
         document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
         document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
@@ -107,31 +104,31 @@ const validarCampo = (expresion, input, campo) => {
 const validarFormulario = (e) => {
     switch (e.target.name) {
         case "usuario":
-        validarCampo(expresiones.usuario, e.target, 'usuario');
-        break;
+            validarCampo(expresiones.usuario, e.target, 'usuario');
+            break;
         case "nombre":
-        validarCampo(expresiones.nombre, e.target, 'nombre');
-        break;
+            validarCampo(expresiones.nombre, e.target, 'nombre');
+            break;
         case "contrasena":
-        validarCampo(expresiones.contrasena, e.target, 'contrasena');
-        validarContrasena();
-        break;
+            validarCampo(expresiones.contrasena, e.target, 'contrasena');
+            validarContrasena();
+            break;
         case "contrasena2":
-        validarContrasena();
-        break;
+            validarContrasena();
+            break;
         case "apellido":
-        validarCampo(expresiones.apellido, e.target, 'apellido');
-        break;
+            validarCampo(expresiones.apellido, e.target, 'apellido');
+            break;
         case "documento":
-        validarCampo(expresiones.documento, e.target, 'documento');
-        break;
+            validarCampo(expresiones.documento, e.target, 'documento');
+            break;
     }
 }
 const validarContrasena = () => {
     const inputPassword1 = document.getElementById('contrasena');
     const inputPassword2 = document.getElementById('contrasena2');
 
-    if(inputPassword1.value !== inputPassword2.value){
+    if (inputPassword1.value !== inputPassword2.value) {
         document.getElementById(`grupo__contrasena2`).classList.add('formulario__grupo-incorrecto');
         document.getElementById(`grupo__contrasena2`).classList.remove('formulario__grupo-correcto');
         document.querySelector(`#grupo__contrasena2 i`).classList.add('fa-times-circle');
@@ -153,9 +150,9 @@ inputs.forEach((input) => {
 });
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(campos.usuario && campos.nombre && campos.contrasena && campos.documento && campos.apellido ){
+    if (campos.usuario && campos.nombre && campos.contrasena && campos.documento && campos.apellido) {
         procesarDatos();
-        formulario.reset();        
+        formulario.reset();
         document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
         document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
         setTimeout(() => {
@@ -170,20 +167,20 @@ formulario.addEventListener('submit', (e) => {
 });
 
 
-function procesarDatos(){    
-    fetch('../procesar.php',{
+function procesarDatos() {
+    fetch('../procesar.php', {
         method: 'post',
-        body:new FormData(formulario)
-    }).then(function(response) {
-        return response.json(); 
-    }).then(function(json) {
+        body: new FormData(formulario)
+    }).then(function (response) {
+        return response.json();
+    }).then(function (json) {
         guardarLocal(json);
-    }).catch(function(err) {
-  // Error :(
-});
+    }).catch(function (err) {
+        // Error :(
+    });
 }
-function guardarLocal(json){
-    localStorage.setItem("usuario",JSON.stringify(json));
+function guardarLocal(json) {
+    localStorage.setItem("usuario", JSON.stringify(json));
     //location.href = "index.html";
     irA(Inicio);
 }
