@@ -1,7 +1,8 @@
 var Splash, Inicio, Mapa, Carta, Carta1, Carta2, Reserva_Sin_Login, Reserva, Login, Registro;
 var btn_carta,btn_reserva, btn_mapa, btn_registro, btn_login;
 var secciones = [];
-
+const formulario = document.getElementById('formulario');
+const inputs = document.querySelectorAll('#formulario input');
 window.onload = () =>{
     crearReferencias();
     agregarEventos();
@@ -72,26 +73,117 @@ function ocultarSecciones()
         secciones[i].classList.add("ocultar");
     }
 }
-
-
-
-
-function validar(){
-    var nombre, apellido, documento, usuario, contrasena;
-
-    nombre = document.getElementById("nombre_registro").value;
-    apellido = document.getElementById("apellido_registro").value;
-    documento = document.getElementById("documento_registro").value;
-    usuario = document.getElementById("usuario_registro").value;
-    contrasena = document.getElementById("contrasena_registro").value;
-
-    if(nombre === "" || apellido === "" || documento === "" || usuario === "" || contrasena === ""){
-        alert("Todos los campos son obligatorios")
-    }else{
-        localStorage.nombre = document.getElementById("nombre").value;
-        localStorage.apellido = document.getElementById("apellido").value;
-        localStorage.documento = document.getElementById("documento").value;
-        localStorage.usuario = document.getElementById("usuario").value;
-        localStorage.contrasena = document.getElementById("contrasena").value;
+const expresiones = {
+    usuario: /^[a-zA-Z0-9]{4,16}$/, 
+    nombre: /^[a-zA-z]{3,20}$/, 
+    apellido: /^[a-zA-z]{2,35}$/,
+    contrasena: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+    documento: /^[0-9]{8,16}$/ 
+}
+const campos = {
+    usuario: false,
+    apellido: false,
+    nombre: false,
+    contrasena: false,
+    documento: false   
+}
+const validarCampo = (expresion, input, campo) => {
+    if(expresion.test(input.value)){
+        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+        document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+        document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+        campos[campo] = true;
+    } else {
+        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+        document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+        document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+        campos[campo] = false;
     }
+}
+const validarFormulario = (e) => {
+    switch (e.target.name) {
+        case "usuario":
+        validarCampo(expresiones.usuario, e.target, 'usuario');
+        break;
+        case "nombre":
+        validarCampo(expresiones.nombre, e.target, 'nombre');
+        break;
+        case "contrasena":
+        validarCampo(expresiones.contrasena, e.target, 'contrasena');
+        validarContrasena();
+        break;
+        case "contrasena2":
+        validarContrasena();
+        break;
+        case "apellido":
+        validarCampo(expresiones.apellido, e.target, 'apellido');
+        break;
+        case "documento":
+        validarCampo(expresiones.documento, e.target, 'documento');
+        break;
+    }
+}
+const validarContrasena = () => {
+    const inputPassword1 = document.getElementById('contrasena');
+    const inputPassword2 = document.getElementById('contrasena2');
+
+    if(inputPassword1.value !== inputPassword2.value){
+        document.getElementById(`grupo__contrasena2`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__contrasena2`).classList.remove('formulario__grupo-correcto');
+        document.querySelector(`#grupo__contrasena2 i`).classList.add('fa-times-circle');
+        document.querySelector(`#grupo__contrasena2 i`).classList.remove('fa-check-circle');
+        document.querySelector(`#grupo__contrasena2 .formulario__input-error`).classList.add('formulario__input-error-activo');
+        campos['contrasena'] = false;
+    } else {
+        document.getElementById(`grupo__contrasena2`).classList.remove('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__contrasena2`).classList.add('formulario__grupo-correcto');
+        document.querySelector(`#grupo__contrasena2 i`).classList.remove('fa-times-circle');
+        document.querySelector(`#grupo__contrasena2 i`).classList.add('fa-check-circle');
+        document.querySelector(`#grupo__contrasena2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
+        campos['contrasena'] = true;
+    }
+}
+inputs.forEach((input) => {
+    input.addEventListener('keyup', validarFormulario);
+    input.addEventListener('blur', validarFormulario);
+});
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if(campos.usuario && campos.nombre && campos.contrasena && campos.documento && campos.apellido ){
+        procesarDatos();
+        formulario.reset();        
+        document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
+        document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+        setTimeout(() => {
+            document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
+        }, 5000);
+        document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
+            icono.classList.remove('formulario__grupo-correcto');
+        });
+    } else {
+        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+    }
+});
+
+
+function procesarDatos(){    
+    fetch('../procesar.php',{
+        method: 'post',
+        body:new FormData(formulario)
+    }).then(function(response) {
+        return response.json(); 
+    }).then(function(json) {
+        guardarLocal(json);
+    }).catch(function(err) {
+  // Error :(
+});
+}
+function guardarLocal(json){
+    localStorage.setItem("usuario",JSON.stringify(json));
+    //location.href = "index.html";
+    irA(Inicio);
 }
