@@ -111,10 +111,6 @@ const validarFormulario = (e) => {
             break;
         case "contrasena":
             validarCampo(expresiones.contrasena, e.target, 'contrasena');
-            validarContrasena();
-            break;
-        case "contrasena2":
-            validarContrasena();
             break;
         case "apellido":
             validarCampo(expresiones.apellido, e.target, 'apellido');
@@ -124,26 +120,6 @@ const validarFormulario = (e) => {
             break;
     }
 }
-const validarContrasena = () => {
-    const inputPassword1 = document.getElementById('contrasena');
-    const inputPassword2 = document.getElementById('contrasena2');
-
-    if (inputPassword1.value !== inputPassword2.value) {
-        document.getElementById(`grupo__contrasena2`).classList.add('formulario__grupo-incorrecto');
-        document.getElementById(`grupo__contrasena2`).classList.remove('formulario__grupo-correcto');
-        document.querySelector(`#grupo__contrasena2 i`).classList.add('fa-times-circle');
-        document.querySelector(`#grupo__contrasena2 i`).classList.remove('fa-check-circle');
-        document.querySelector(`#grupo__contrasena2 .formulario__input-error`).classList.add('formulario__input-error-activo');
-        campos['contrasena'] = false;
-    } else {
-        document.getElementById(`grupo__contrasena2`).classList.remove('formulario__grupo-incorrecto');
-        document.getElementById(`grupo__contrasena2`).classList.add('formulario__grupo-correcto');
-        document.querySelector(`#grupo__contrasena2 i`).classList.remove('fa-times-circle');
-        document.querySelector(`#grupo__contrasena2 i`).classList.add('fa-check-circle');
-        document.querySelector(`#grupo__contrasena2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
-        campos['contrasena'] = true;
-    }
-}
 inputs.forEach((input) => {
     input.addEventListener('keyup', validarFormulario);
     input.addEventListener('blur', validarFormulario);
@@ -151,7 +127,7 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
     if (campos.usuario && campos.nombre && campos.contrasena && campos.documento && campos.apellido) {
-        procesarDatos();
+        store();
         formulario.reset();
         document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
         document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
@@ -166,21 +142,32 @@ formulario.addEventListener('submit', (e) => {
     }
 });
 
+function store() {
+    event.preventDefault();
+    var nombre = document.getElementById("nombre");
+    var apellido = document.getElementById("apellido");
+    var documento = document.getElementById("documento");
+    var usuario = document.getElementById("usuario");
+    var contrasena = document.getElementById("contrasena");
+    localStorage.setItem('nombre',nombre.value);
+    localStorage.setItem('apellido',apellido.value);
+    localStorage.setItem('documento',documento.value);
+    localStorage.setItem('usuario',usuario.value);
+    localStorage.setItem('contrasena',contrasena.value);
 
-function procesarDatos() {
-    fetch('../procesar.php', {
-        method: 'post',
-        body: new FormData(formulario)
-    }).then(function (response) {
-        return response.json();
-    }).then(function (json) {
-        guardarLocal(json);
-    }).catch(function (err) {
-        // Error :(
-    });
 }
-function guardarLocal(json) {
-    localStorage.setItem("usuario", JSON.stringify(json));
-    //location.href = "index.html";
-    irA(Inicio);
+function check(){
+    event.preventDefault();
+    var storedName = localStorage.getItem('nombre');
+    var storedPw = localStorage.getItem('contrasena');
+
+    var userName = document.getElementById('usuario-login');
+    var userPw = document.getElementById('contrasena-login');
+
+    if(userName.value == storedName && userPw.value == storedPw){
+        irA(Reserva);
+    }else{
+        alert('Error on login');
+    }
 }
+

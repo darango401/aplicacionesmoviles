@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
 	<div class="Splash Contenedores ocultar" id="Splash">
 		<div class="Logo">
 			<img src="images/Logo.png" alt="Logo">
@@ -237,19 +236,19 @@
 		</div>
 		<div class="contenido">
 			<br><br><br><br>
-			<form method="post" class="formulario" id="formulario_login">
+			<form method="POST" class="formulario" id="formulario-login" >
 				<div class="form-group">
 					<label for="nombre">Usuario:</label>
-					<input class="form-control" id="usuario_login" required type="text" placeholder="Usuario:">
+					<input class="form-control" id="usuario-login" required type="text" placeholder="Usuario:">
 				</div>
 				<div class="form-group">
 					<label for="nombre">Contraseña:</label>
-					<input class="form-control" id="contrasena_login" required type="password" placeholder="Contraseña:">
+					<input class="form-control" id="contrasena-login" required type="password" placeholder="Contraseña:">
 				</div>
 				<div class="Registrate">
 					<a href="javascript:void(0);" id="btn_registrate">Registrate</a>
 				</div>
-				<input class="form-control Enviar" id="Inicio_Sesion" type="submit" onclick="procesarLogin();" value="Iniciar Sesión">
+				<input class="form-control Enviar" id="Inicio_Sesion" onclick="check()" type="submit" value="Iniciar Sesión"/>
 			</form>
 		</div>
 	</div>
@@ -264,7 +263,7 @@
 			</div>
 		</div>
 		<div class="contenido">
-			<form id="formulario" action="" novalidate method="POST" action="procesar.php" class="formulario">
+			<form id="formulario" novalidate method="POST" class="formulario">
 				<div class="formulario__grupo" id="grupo__nombre">
 					<label for="nombre" class="formulario__label">Nombre</label>
 					<div class="formulario__grupo-input">
@@ -306,14 +305,6 @@
 					<p class="formulario__input-error">Debe tener minimo 8 caracteres con una mayúscula, una minúscula y
 						un numero</p>
 				</div>
-				<div class="formulario__grupo" id="grupo__contrasena2">
-					<label for="contrasena2" class="formulario__label">Repetir Contraseña</label>
-					<div class="formulario__grupo-input">
-						<input type="password" class="formulario__input" name="contrasena2" id="contrasena2">
-						<i class="formulario__validacion-estado far fa-check-square"></i>
-					</div>
-					<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
-				</div>
 				<div class="formulario__mensaje" id="formulario__mensaje">
 					<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario
 						correctamente. </p>
@@ -323,7 +314,7 @@
 						correctamente. </p>
 				</div>
 				<div class="formulario__grupo formulario__grupo-btn-enviar">
-					<button type="submit" class="formulario__btn" id="registro">Registrarme</button>
+					<button type="submit" class="formulario__btn" id="registro" >Registrarme</button>  
 					<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Se ha registrado exitosamente
 					</p>
 				</div>
@@ -331,7 +322,6 @@
 		</div>
 	</div>
 	<script src="js/main.js"></script>
-	<script src="js/login.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
