@@ -158,7 +158,7 @@ function store() {
 }
 function check(){
     event.preventDefault();
-    var storedName = localStorage.getItem('nombre');
+    var storedName = localStorage.getItem('usuario');
     var storedPw = localStorage.getItem('contrasena');
 
     var userName = document.getElementById('usuario-login');
