@@ -167,7 +167,7 @@ function check(){
     if(userName.value == storedName && userPw.value == storedPw){
         irA(Reserva);
     }else{
-        alert('Error on login');
+        alert('Verifique su usuario o contraseña');
     }
 }
 

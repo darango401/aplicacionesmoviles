@@ -51,9 +51,7 @@
 			</div>
 		</div>
 		<div class="contenido">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6503945839877!2d-75.5854859794392!3d6.177532293410848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4682454816729b%3A0xe700e9c7b9d72e54!2sLa%20Calle%20de%20Buena%20Mesa%2C%20Envigado%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1614964552920!5m2!1ses!2sco"
-				width="360" height="640" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			<img src="images/map.png" alt="" height="640" width="360">
 		</div>
 	</div>
 
@@ -202,29 +200,25 @@
 		</div>
 		<div class="contenido">
 			<br><br><br><br>
-			<form action="SendByEmail.php" method="POST" class="formulario">
+			<form action="" class="formulario">
 				<div class="form-group">
 					<label for="nombre">Nombre:</label>
-					<input class="form-control" name="nombre" id="nombre_reserva" type="text" placeholder="Nombre:" required>
+					<input class="form-control" id="nombre_reserva" type="text" placeholder="Nombre:">
 				</div>
 				<div class="form-group">
 					<label for="nombre">Apellido:</label>
-					<input class="form-control" name="apellido" id="apellido_reserva" type="text" placeholder="Apellido:" required>
-				</div>
-				<div class="form-group">
-					<label for="nombre">Correo:</label>
-					<input class="form-control" name="correo" id="correo_reserva" type="email" placeholder="Correo@correo.com" required>
+					<input class="form-control" id="apellido_reserva" type="text" placeholder="Apellido:">
 				</div>
 				<div class="form-group">
 					<label for="nombre">Fecha:</label>
-					<input class="form-control" name="fecha" id="fecha_reserva" type="date" placeholder="Fecha:" required>
+					<input class="form-control" id="fecha_reserva" type="date" placeholder="Fecha:">
 				</div>
 				<div class="form-group">
 					<label for="nombre">Hora:</label>
-					<input class="form-control" name="hora" id="hora_reserva" type="time" placeholder="Hora:" required>
+					<input class="form-control" id="hora_reserva" type="time" placeholder="Hora:">
 				</div>
 				<br>
-				<input class="form-control Enviar" name="reservar" id="Reservar" type="submit" value="Reservar">
+				<input class="form-control Enviar" id="Reservar" type="submit" value="Reservar">
 			</form>
 		</div>
 	</div>
